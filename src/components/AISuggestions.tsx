@@ -6,10 +6,10 @@ interface AISuggestionsProps {
 }
 
 const AISuggestions: React.FC<AISuggestionsProps> = ({ mood, onBack }) => {
-  // AI Suggestions berdasarkan mood
+
   const getAISuggestions = (moodValue: number) => {
     const suggestions = {
-      1: { // Very Sad
+      1: {
         emoji: '🫂',
         moodLabel: 'Very Sad',
         message: "I understand you're going through a difficult time. You're not alone, and it's brave of you to acknowledge how you feel.",
@@ -22,7 +22,7 @@ const AISuggestions: React.FC<AISuggestionsProps> = ({ mood, onBack }) => {
         urgency: 'high',
         color: 'blue'
       },
-      2: { // Sad
+      2: { 
         emoji: '💙',
         moodLabel: 'Sad',
         message: "It's okay to feel sad. These feelings are temporary, and I'm here to support you through this.",
@@ -35,7 +35,7 @@ const AISuggestions: React.FC<AISuggestionsProps> = ({ mood, onBack }) => {
         urgency: 'medium',
         color: 'purple'
       },
-      3: { // Neutral
+      3: { 
         emoji: '🌱',
         moodLabel: 'Neutral',
         message: "You're doing well maintaining balance. Let's keep that positive momentum going!",
@@ -48,7 +48,7 @@ const AISuggestions: React.FC<AISuggestionsProps> = ({ mood, onBack }) => {
         urgency: 'low',
         color: 'green'
       },
-      4: { // Good
+      4: { 
         emoji: '✨',
         moodLabel: 'Good',
         message: "I'm glad you're feeling good! This is a great time to build on that positive energy.",
@@ -61,7 +61,7 @@ const AISuggestions: React.FC<AISuggestionsProps> = ({ mood, onBack }) => {
         urgency: 'low',
         color: 'green'
       },
-      5: { // Very Happy
+      5: {
         emoji: '🌟',
         moodLabel: 'Very Happy',
         message: "That's wonderful! Your positive energy is inspiring. Keep spreading those good vibes!",
@@ -96,7 +96,7 @@ const AISuggestions: React.FC<AISuggestionsProps> = ({ mood, onBack }) => {
 
   return (
     <div className="animate-[fadeIn_0.5s_ease-in]">
-      {/* Back Button */}
+
       <button
         onClick={onBack}
         className="mb-6 flex items-center gap-2 text-primary hover:text-primary/80 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-primary/40 rounded-lg px-3 py-2"
@@ -106,7 +106,6 @@ const AISuggestions: React.FC<AISuggestionsProps> = ({ mood, onBack }) => {
         <span className="font-medium">Back</span>
       </button>
 
-      {/* Header */}
       <div className="text-center mb-8">
         <div className="text-6xl sm:text-7xl mb-4 animate-[float_2s_ease-in-out_infinite]" aria-hidden="true">
           {suggestion.emoji}
@@ -119,14 +118,12 @@ const AISuggestions: React.FC<AISuggestionsProps> = ({ mood, onBack }) => {
         </p>
       </div>
 
-      {/* AI Message Card */}
       <div className={`mb-6 p-6 sm:p-8 rounded-2xl border-2 ${getBackgroundColor()} animate-[slideIn_0.6s_ease-out]`}>
         <p className="text-base sm:text-lg text-gray-700 font-medium leading-relaxed text-center">
           {suggestion.message}
         </p>
       </div>
 
-      {/* Activities Card */}
       <div className="bg-secondary rounded-2xl border-2 border-gray-200 p-6 sm:p-8 shadow-sm animate-[slideIn_0.6s_ease-out]" style={{ animationDelay: '0.1s' }}>
         <h3 className="text-lg sm:text-xl font-semibold text-gray-700 mb-6 flex items-center justify-center gap-2">
           <span className="text-2xl">💡</span> 
@@ -145,7 +142,6 @@ const AISuggestions: React.FC<AISuggestionsProps> = ({ mood, onBack }) => {
         </ul>
       </div>
 
-      {/* Crisis Warning for High Urgency */}
       {suggestion.urgency === 'high' && (
         <div className="mt-6 p-4 sm:p-6 bg-blue-100 border-l-4 border-blue-500 rounded-lg animate-[slideIn_0.6s_ease-out]" style={{ animationDelay: '0.4s' }}>
           <p className="text-sm sm:text-base text-blue-900 flex items-start gap-2">
@@ -158,7 +154,6 @@ const AISuggestions: React.FC<AISuggestionsProps> = ({ mood, onBack }) => {
         </div>
       )}
 
-      {/* Action Button */}
       <div className="mt-8 text-center">
         <button
           onClick={onBack}

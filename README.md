@@ -1,55 +1,32 @@
-# EmergencyCall - Mental Health Support Platform
+## EmergencyCall – Mental Health Platform
 
-Platform mood tracking dengan AI suggestions yang mengutamakan mental wellness UI principles dan aksesibilitas.
+### Arsitektur & Alasan Framework/Library
+Aplikasi dibangun dengan **React + TypeScript** untuk kemudahan pengembangan, keamanan tipe data, dan reusability komponen. **Vite** dipilih karena proses development yang sangat cepat. **Tailwind CSS** digunakan agar styling konsisten dan mudah diatur.
 
-## 🏗️ Tech Stack
+**Struktur utama:**
+- App.tsx (state container & router sederhana)
+- MoodForm & MoodScale (input mood)
+- RecommendationCard, AISuggestions, ComingSoon (output & navigasi)
+- Notification (feedback/toast)
 
-**React 19 + TypeScript + Vite + Tailwind CSS v4**
+### Logika State Management & Interaksi
+State dikelola dengan React Hooks (`useState`) tanpa library eksternal, cukup untuk aplikasi skala kecil-menengah. State utama:
+- `currentMood` (angka 1-5)
+- `showNotification`, `showRecommendation`, `showSuggestions`, `showComingSoon` (navigasi)
 
-- React + TS: Type safety & component reusability
-- Vite: Fast refresh & optimal DX
-- Tailwind v4: Rapid prototyping dengan custom theme consistency
+**Alur interaksi:**
+1. User memilih mood (radio button)
+2. Emoji & label mood muncul di samping
+3. Tombol Continue aktif setelah memilih mood
+4. Setelah submit, muncul notifikasi & navigasi ke rekomendasi/AI/coming soon
 
-## 🔄 State Management
+Komunikasi antar elemen via props & children, sehingga komponen tetap reusable dan mudah di-maintain.
 
-Simple **React Hooks** tanpa external library (Redux/Zustand) - cukup untuk skala kecil-menengah, mudah di-track.
+### Desain untuk User Comfort & Mental Wellness
+- **Warna utama biru lembut (#4D90FE), putih, abu-abu:** Memberikan efek menenangkan, menghindari warna agresif.
+- **Aksesibilitas:** ARIA label, keyboard navigation, support reduced motion.
+- **Interaksi lembut:** Transisi halus, animasi tidak berlebihan, layout responsif.
+- **Validasi emosi:** Pesan positif, emoji besar, dan saran yang empatik.
+- **Visual hierarchy:** Spasi lega, tombol besar, teks mudah dibaca.
 
-```
-App.tsx → MoodForm → MoodScale → Notification → RecommendationCard → AISuggestions/ComingSoon
-```
-
-## 🧩 Future Integration
-Mood data dari fitur Mood Check-In dapat diintegrasikan dengan dashboard konselor untuk memantau kondisi emosional pengguna secara harian.
-Selain itu, sistem dapat dikembangkan untuk menghubungkan hasil mood tracking dengan AI Support atau jadwal sesi konseling langsung melalui API internal agar AI/konselor tau mood pengguna.
-
-
-## 💙 Mental Wellness UI
-
-### Color Palette
-- Primary `#4D90FE` - Biru lembut (calming)
-- Secondary `#FFFFFF` - Putih bersih (clarity)  
-- Tertiary `#F5F6FA` - Abu-abu netral
-
-### Principles
-1. **Accessibility**: ARIA labels, keyboard nav, screen reader support, reduced motion
-2. **Gentle Interactions**: Smooth transitions (300ms), subtle animations, progressive disclosure
-3. **Empathetic Content**: Non-judgmental, validating, actionable suggestions
-4. **Visual Comfort**: Large touch targets (44px), generous spacing, clear hierarchy
-
-### Features
-- **Mood-Based AI**: 5 levels (Very Sad → Very Happy) dengan personalized activities
-- **Responsive**: Mobile-first, touch-friendly
-- **Performance**: Conditional rendering, CSS keyframes, no external icons
-
-## 🚀 Development
-
-```bash
-npm install
-npm run dev
-npm run build
-```
-
-**Browser Support**: Modern browsers, WCAG 2.1 Level AA compliant
-
----
-Built with 💙 for mental wellness
+Desain ini meminimalisir trigger kecemasan, memudahkan fokus, dan memberikan pengalaman yang ramah untuk semua pengguna.
