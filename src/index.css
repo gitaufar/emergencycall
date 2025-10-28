@@ -1,0 +1,109 @@
+
+@import "tailwindcss";
+
+@theme {
+  --color-primary: #4D90FE; /* Biru Lembut */
+  --color-secondary: #FFFFFF; /* Putih Bersih */
+  --color-tertiary: #F5F6FA; /* Abu-abu Muda */
+}
+
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-100%);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes bounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+@keyframes bounceIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.3);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.05);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  @keyframes bounce {
+    0%, 100% {
+      transform: none;
+    }
+  }
+
+  @keyframes float {
+    0%, 100% {
+      transform: none;
+    }
+  }
+
+  @keyframes bounceIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+      transform: none;
+    }
+  }
+
+  @keyframes slideIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+      transform: none;
+    }
+  }
+}
+
