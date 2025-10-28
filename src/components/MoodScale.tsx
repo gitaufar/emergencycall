@@ -5,7 +5,7 @@ interface MoodScaleProps {
   onMoodChange: (mood: number) => void;
 }
 
-const MoodScale: React.FC<MoodScaleProps> = ({ selectedMood, onMoodChange }) => {
+const MoodScale: React.FC<React.PropsWithChildren<MoodScaleProps>> = ({ selectedMood, onMoodChange }) => {
   const moods = [
     { emoji: '😢', label: 'Very Sad', value: 1, ariaLabel: 'Select very sad mood' },
     { emoji: '😟', label: 'Sad', value: 2, ariaLabel: 'Select sad mood' },
@@ -17,9 +17,8 @@ const MoodScale: React.FC<MoodScaleProps> = ({ selectedMood, onMoodChange }) => 
   const selectedMoodData = moods.find(mood => mood.value === selectedMood);
 
   return (
-    <div className="flex flex-col gap-6 sm:gap-8">
-      {/* Radio Button Options */}
-      <fieldset className="flex flex-col gap-3 max-w-md mx-auto w-full">
+    <div className="flex flex-col md:grid md:grid-cols-2 gap-6 md:gap-8 md:items-stretch">
+      <fieldset className="flex flex-col gap-3 w-full">
         <legend className="sr-only">Select your current mood</legend>
         {moods.map((mood) => (
           <label
@@ -51,18 +50,17 @@ const MoodScale: React.FC<MoodScaleProps> = ({ selectedMood, onMoodChange }) => 
           </label>
         ))}
       </fieldset>
-
       {selectedMoodData && (
         <div 
-          className="flex flex-col items-center gap-3 py-4 animate-[bounceIn_0.6s_ease-out]"
+          className="flex flex-col items-center justify-center gap-3 py-4 md:py-8 h-full"
           role="status"
           aria-live="polite"
           aria-atomic="true"
         >
-          <div className="text-7xl sm:text-8xl animate-[float_2s_ease-in-out_infinite]" aria-hidden="true">
+          <div className="text-7xl sm:text-8xl animate-[float_2s_ease-in-out_infinite] mb-2" aria-hidden="true">
             {selectedMoodData.emoji}
           </div>
-          <p className="text-base sm:text-lg font-medium text-gray-600 text-center px-4">
+          <p className="text-base sm:text-lg font-medium text-gray-600 text-center px-4 mb-2">
             You're feeling <span className="text-primary font-semibold">{selectedMoodData.label.toLowerCase()}</span>
           </p>
         </div>
